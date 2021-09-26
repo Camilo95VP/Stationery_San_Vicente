@@ -2,7 +2,7 @@ import './App.css';
 import Contact from './components/Contact';
 import Login from './components/Login';
 import Nav from './components/Nav';
-
+import SellersInfo from './components/SellersInfo';
 
 function App() {
   return (
@@ -10,6 +10,7 @@ function App() {
       <Nav/>
       <Login/>
       <Contact/>
+      <SellersInfo/>
     </div>
   );
 }
