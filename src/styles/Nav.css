@@ -1,0 +1,10 @@
+.d-inline-block{
+ border-radius: 50%;
+}
+.cont-logo{
+    margin-left: 10px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

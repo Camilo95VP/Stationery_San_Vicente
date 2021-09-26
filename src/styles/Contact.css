@@ -1,0 +1,26 @@
+.cont-icons{
+    display: flex;
+    justify-content: space-between;
+    width: 15%;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+.facebook{
+    cursor: pointer;
+    font-size: 30px;
+    color: #3b5998;
+}
+.instagram{
+    cursor: pointer;
+    font-size: 30px;
+    color: #f09433; 
+    color: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); 
+    color: -webkit-linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+    color: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+   
+}
+.youtube{
+    cursor: pointer;
+    font-size: 30px;
+    color: #c4302b;
+}

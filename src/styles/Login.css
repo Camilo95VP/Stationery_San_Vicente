@@ -1,0 +1,25 @@
+body{
+    background-image: url(../logo/fondo2.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+}
+.cont{
+    width: 40%;
+    margin: 0 auto;
+    margin-top: 15%;
+}
+@media(max-width: 420px){
+    .cont{
+        width: 85%;
+        margin-top: 30%;
+    }
+}
+.cont-botons{
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+}
+.label{
+    width: 20%;
+}
