@@ -1,9 +1,16 @@
 import React from 'react'
 import Table from 'react-bootstrap/Table'
 import '../styles/SellersInfo.css'
-import Nav from '../components/Nav.jsx'
-import Contact from '../components/Contact.jsx'
+import Nav from '../shared/Nav'
+import Contact from '../shared/Contact'
+import swal from 'sweetalert'
 function SellersInfo() {
+  swal({
+    title: "Información vendedores",
+    text: "Consultar y modificar informacón",
+    icon: "success",
+    button: "ok",
+  });
     return (
         <div>
         <Nav/>

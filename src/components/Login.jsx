@@ -3,7 +3,9 @@ import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import '../styles/Login.css'
 import swal from 'sweetalert'
-
+import Nav from '../shared/Nav';
+import Contact from '../shared/Contact'
+import{Link} from 'react-router-dom'
 
 
 export default function Login() {
@@ -17,6 +19,8 @@ function ingresar(){
 }
 
     return (
+    <div>
+        <Nav/>
         <div className="cont">
             <Form>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -34,12 +38,13 @@ function ingresar(){
                     <div className="label" ><Form.Check type="checkbox" label="Mostrar" /></div>
                 </Form.Group>
                 <div className="cont-botons" >
-                    <Button variant="primary" type="submit" onClick={ingresar} >Registrarse</Button>
-                    <Button variant="success" type="submit" onClick={ingresar} >Ingresar</Button>
+                    <Button variant="primary" type="submit"  onClick={ingresar} >Registrarse</Button>
+                    <Link to="/infovendedores"><Button variant="success" type="submit">Ingresar</Button></Link>
                 </div>
             </Form>
             
         </div>
-        
+        <Contact/>
+    </div>
     )
 }

@@ -1,17 +1,25 @@
 import './App.css';
-import Contact from './components/Contact';
 import Login from './components/Login';
-import Nav from './components/Nav';
+import { BrowserRouter, Link, Route, Switch } from 'react-router-dom'
 import SellersInfo from './components/SellersInfo';
 
 function App() {
   return (
-    <div className="App">
-      <Nav/>
-      <Login/>
-      <Contact/>
-      <SellersInfo/>
-    </div>
+    <BrowserRouter>
+      
+      <Link to="/"></Link>
+      <Link to="infovendedores"></Link>
+
+      <Switch>
+        <Route path="/" exact>
+          <Login/>
+        </Route>
+        
+        <Route path="/infovendedores" >
+          <SellersInfo/>
+        </Route>
+      </Switch>
+    </BrowserRouter>
   );
 }
 

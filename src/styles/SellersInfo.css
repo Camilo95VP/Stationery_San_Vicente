@@ -6,3 +6,10 @@
 .title{
     margin-bottom: 30px;
 }
+@media(max-width: 420px){
+    .cont-table{
+        width: 85%;
+        margin-top: 30%;
+        margin: 0 auto;
+    }
+}
