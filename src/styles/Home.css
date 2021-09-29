@@ -13,6 +13,7 @@ body{
     font-family:cursive;
     line-height: 3em;
     margin-bottom: 140px;
+    text-align: left;
 }
 @media(max-width:480px){
     .cont-home{

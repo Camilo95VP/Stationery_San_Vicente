@@ -4,16 +4,22 @@ import Home from '../src/components/Home'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import SellersInfo from './components/SellersInfo';
 import ListProducts from "./components/ListProducts";
+import SistemaGestion from './components/SistemaGestion';
 
 function App() {
   return (
     <>
       <BrowserRouter>
-        <Nav />
+      
+        <Nav />        
 
         <Switch>
           <Route path="/" exact>
             <Home />
+          </Route>
+
+          <Route path="/SistemaGestion" exact>
+            <SistemaGestion/>
           </Route>
 
           <Route path="/infovendedores">
