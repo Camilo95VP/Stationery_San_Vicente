@@ -6,7 +6,7 @@ import '../styles/Nav.css'
 
 function Nav() {
     return (
-    <div className="navbar">    
+    <div className="navbarr">    
      
          <div className="cont-logo"> 
             <Navbar.Brand href="#home">

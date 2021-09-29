@@ -1,27 +1,31 @@
 import './App.css';
 import Nav from './shared/Nav'
 import Home from '../src/components/Home'
-import { BrowserRouter, Link, Route, Switch } from 'react-router-dom'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import SellersInfo from './components/SellersInfo';
+import ListProducts from "./components/ListProducts";
 
 function App() {
   return (
-    <BrowserRouter>
-      
-      <Link to="/"></Link>
-      <Link to="infovendedores"></Link>
+    <>
+      <BrowserRouter>
+        <Nav />
 
-      <Switch>
-        <Route path="/" exact>
-          <Nav/>
-          <Home/>
-        </Route>
-        
-        <Route path="/infovendedores" >
-          <SellersInfo/>
-        </Route>
-      </Switch>
-    </BrowserRouter>
+        <Switch>
+          <Route path="/" exact>
+            <Home />
+          </Route>
+
+          <Route path="/infovendedores">
+            <SellersInfo />
+          </Route>
+
+          <Route path="/list-products">
+            <ListProducts />
+          </Route>
+        </Switch>
+      </BrowserRouter>
+    </>
   );
 }
 

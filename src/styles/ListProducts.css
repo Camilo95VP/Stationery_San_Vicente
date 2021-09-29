@@ -1,0 +1,49 @@
+.container {
+  margin-top: 110px !important;
+}
+
+.container .card {
+  border: none;
+  outline: none;
+  background-color: #f5f5f5;
+  border-radius: 20px;
+  transition: transform 0.3s;
+}
+
+.container .card:hover {
+  transform: translateY(-15px);
+  transition: transform 0.3s;
+}
+
+.rounded {
+  border-radius: 20px;
+}
+
+.text1 {
+  font-size: 13px;
+  color: #cbcbcb;
+}
+
+.info {
+  line-height: 17px;
+}
+
+.cost span {
+  color: #fb3531;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.edit {
+  background-color: #dc3545;
+}
+
+.edit:hover {
+  opacity: 0.8;
+}
+
+.cursor {
+  cursor: pointer;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}

@@ -1,5 +1,6 @@
 import React from 'react'
 import Button from 'react-bootstrap/Button'
+import '../styles/LoginButton.css'
 
 export default function LoginButton() {
     return (
