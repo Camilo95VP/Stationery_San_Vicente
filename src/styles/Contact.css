@@ -24,3 +24,8 @@
     font-size: 30px;
     color: #c4302b;
 }
+@media(max-width: 480px){
+    .cont-icons{
+        width: 50%;
+    }
+}

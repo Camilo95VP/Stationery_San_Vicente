@@ -1,0 +1,28 @@
+body{
+    background-image: url(../logo/fondo2.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    
+}
+.cont-home{
+    color: #212529;
+    width: 50%;
+    margin-left: 120px;
+    margin-top: 200px;
+    font-family:cursive;
+    line-height: 3em;
+    margin-bottom: 140px;
+}
+@media(max-width:480px){
+    .cont-home{
+        width: 80%;
+        position: relative;
+        margin: 0 auto;
+        margin-bottom: 100px;
+    }
+    .cont{
+        position: relative;
+        top: 90px;
+    }
+}

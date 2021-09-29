@@ -1,3 +1,7 @@
+body{
+    margin: 0 auto;
+    padding: 0;
+}
 .cont-table{
     width: 50%;
     margin: 0 auto;

@@ -1,5 +1,6 @@
 import './App.css';
-import Login from './components/Login';
+import Nav from './shared/Nav'
+import Home from '../src/components/Home'
 import { BrowserRouter, Link, Route, Switch } from 'react-router-dom'
 import SellersInfo from './components/SellersInfo';
 
@@ -12,7 +13,8 @@ function App() {
 
       <Switch>
         <Route path="/" exact>
-          <Login/>
+          <Nav/>
+          <Home/>
         </Route>
         
         <Route path="/infovendedores" >
