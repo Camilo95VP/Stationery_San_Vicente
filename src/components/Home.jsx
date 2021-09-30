@@ -5,8 +5,9 @@ export default function Home() {
     return (
         <div className="cont">
             <div className="cont-home">
-                <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio quam nostrum sint unde inventore
-                    veniam commodi, fugiat aliquid, explicabo repellat, onsectetur adipisicing elit.</h2>
+                <h1>Bienvenido al sistema de Gestión de la Papelería San Vicente!</h1>
+                <h2>Ubicados en el barrio 7 de Agosto en Bogotá, Colombia. Con más de 50 años de expericiencia en la comercialización de productos escolares, de oficina y obsequios</h2>
+                <h3>Aquí puede realizar tareas de gestión de ventas como registrar, actualizar y consultar ventas. Consultar nuestro portafolio de productos</h3>
             </div>
             <Contact/>
         </div>
