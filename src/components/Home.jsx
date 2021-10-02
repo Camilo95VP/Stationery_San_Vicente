@@ -1,8 +1,12 @@
 import React from 'react'
 import Contact from '../shared/Contact'
 import '../styles/Home.css'
+import LoginButton from './LoginButton'
+
 export default function Home() {
     return (
+        <>
+         <LoginButton/>
         <div className="cont">
             <div className="cont-home">
                 <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio quam nostrum sint unde inventore
@@ -10,5 +14,6 @@ export default function Home() {
             </div>
             <Contact/>
         </div>
+        </>
     )
 }

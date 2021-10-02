@@ -1,6 +1,5 @@
 import React from 'react'
 import Navbar from 'react-bootstrap/Navbar'
-import LoginButton from '../components/LoginButton'
 import logo from '../logo/logo.jpg'
 import '../styles/Nav.css'
 
@@ -14,7 +13,7 @@ function Nav() {
              Stationary San Vicente
             </Navbar.Brand>
           </div>
-          <LoginButton/>
+         
       </div>       
     )
 }
