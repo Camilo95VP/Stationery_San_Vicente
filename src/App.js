@@ -14,41 +14,25 @@ import Logout from './components/Logout'
 function App() {
   const { isAuthenticated } = useAuth0();
   return (
-    <>
-    
+    <> 
       <BrowserRouter>
-      
-        <Nav />        
-       
-        <Switch>
-          <Route path="/" exact>
-            <Home />
-            
-          </Route>
-          <Route path="/SistemaGestion">
-          {isAuthenticated ? (
-          <>
-            
-            <SistemaGestion />
-         
-            
-            <Logout />
-          </>
-        ) : (
-           <Home />
-        )}
-        </Route>
         
+        <Nav />
+
+          <Switch>
+            
+              {isAuthenticated ? (<><SistemaGestion /><Logout /></>) : (<Home />)}
+
+              <Route path="/infovendedores">
+                <SellersInfo />
+              </Route>
+
+              <Route path="/list-products">
+                <ListProducts />
+              </Route>
+
+          </Switch>
           
-
-          <Route path="/infovendedores">
-            <SellersInfo />
-          </Route>
-
-          <Route path="/list-products">
-            <ListProducts />
-          </Route>
-        </Switch>
       </BrowserRouter>
     </>
   );
