@@ -9,8 +9,8 @@ body{
     color: #212529;
     width: 50%;
     margin-left: 120px;
-    margin-top: 200px;
-    font-family:cursive;
+    margin-top: 95px;
+    
     line-height: 3em;
     margin-bottom: 140px;
     text-align: left;
@@ -26,4 +26,7 @@ body{
         position: relative;
         top: 90px;
     }
+}
+.spinner{
+    width: 100%;
 }

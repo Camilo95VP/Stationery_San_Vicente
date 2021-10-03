@@ -1,18 +1,14 @@
 import React from "react";
 import Table from "react-bootstrap/Table";
 import "../styles/SellersInfo.css";
-import swal from "sweetalert";
+
 import Form from 'react-bootstrap/Form'
 import Button from "react-bootstrap/Button";
 import Logout from "./Logout";
 
 
 function SellersInfo() {
-  swal({
-    title: "Información vendedores",
-    text: "Consultar y modificar informacón",
-    button: "ok",
-  });
+
   let usuarios = [
     {
       id: 1,
@@ -66,7 +62,6 @@ function SellersInfo() {
 
   return (
     <div>
-      <Logout/>
       <div className="cont-table">
         
         <Table striped bordered hover>
