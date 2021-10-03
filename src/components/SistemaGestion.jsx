@@ -40,9 +40,11 @@ export default function SistemaGestion() {
         </div>
         <div className="cont">
                 <div className="cont-buttons">
-                    <Button variant="outline-info">Ventas</Button>
+
+                    <Link to="/Ventas" ><Button variant="outline-primary" className="btn-usuarios">Ventas</Button></Link>
                     <Link to="/list-products" ><Button variant="outline-info" className="btn-productos">Productos</Button></Link> 
                     <Link to="/infovendedores" ><Button variant="outline-info"className="btn-usuarios">Usuarios</Button></Link> 
+
                 </div>
             </div>
            
