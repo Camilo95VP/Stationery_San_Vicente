@@ -2,23 +2,41 @@ import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import Button from 'react-bootstrap/Button'
 import '../styles/SistemaGestion.css'
-import swal from "sweetalert";
+import swal from 'sweetalert'
 import { Spinner } from "react-bootstrap";
 import {Link} from 'react-router-dom'
+import Swal from 'sweetalert2/dist/sweetalert2.js'
 
-export default function SistemaGestion() {
+
+
+export default function SistemaGestion() {  
   
   const { user, isAuthenticated, isLoading } = useAuth0();
-
+  Swal.fire({
+    
+    title: 'Ya puedes empezar a trabajar!',
+    imageUrl: 'https://c.tenor.com/4j-z9eTrh1UAAAAi/libre.gif',
+    imageWidth: 400,
+    imageHeight: 200,
+    imageAlt: 'Custom image',
+    padding: '3em'
+  })
   swal({
+    
+    imageUrl: `Hola ${user.picture},`,
     title: `Hola ${user.name},`,
-    text: "Bienvenido al sistema de gestión",
+    text: "Registro Exitoso",
     icon: "success",
     button: "ok",
+    
   });
+  
+  
+  
 
   if (isLoading) {
     return <div className="spinner"><Button variant="primary" disabled>
+      
     <Spinner
       as="span"
       animation="grow"
@@ -29,8 +47,9 @@ export default function SistemaGestion() {
     Loading...
   </Button></div>;
   }
-
+ 
   return (
+    
     isAuthenticated && (
      
       <div>
@@ -40,9 +59,9 @@ export default function SistemaGestion() {
         </div>
         <div className="cont">
                 <div className="cont-buttons">
-                    <Button variant="outline-info">Ventas</Button>
-                    <Link to="/list-products" ><Button variant="outline-info" className="btn-productos">Productos</Button></Link> 
-                    <Link to="/infovendedores" ><Button variant="outline-info"className="btn-usuarios">Usuarios</Button></Link> 
+                    <Button variant="primary">Ventas</Button>
+                    <Link to="/list-products" ><Button variant="primary" className="btn-productos">Productos</Button></Link> 
+                    <Link to="/infovendedores" ><Button variant="primary"className="btn-usuarios">Usuarios</Button></Link> 
                 </div>
             </div>
            
