@@ -1,7 +1,14 @@
 .cont-buttonn{
     text-align: end;
     position: relative;
-    bottom: 592px;
+    bottom: 155px;
     padding: 7px;
+    width: 100px;
     margin: 0px 10px 0px 0px;
+    float: right;
+}
+@media(max-width: 480px){
+    .cont-buttonn{
+        bottom: 340px;
+    }
 }

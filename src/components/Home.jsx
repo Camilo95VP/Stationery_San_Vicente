@@ -10,16 +10,10 @@ export default function Home() {
     const {isLoading } = useAuth0();
 
     if (isLoading) {
-        return <div className="spinner"><Button variant="primary" disabled>
-        <Spinner
-          as="span"
-          animation="grow"
-          size="sm"
-          role="status"
-          aria-hidden="true"
-        />
-        Loading...
-      </Button></div>;
+        return <div className="spinner">
+            <h3>Estamos trabajando para ti!</h3>
+        <Button variant="primary" disabled>
+        <Spinner as="span"  animation="grow" size="sm" role="status" aria-hidden="true"/>Loading...</Button></div>;
       }
 
     return (

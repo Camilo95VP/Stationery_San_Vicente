@@ -18,11 +18,11 @@ function App() {
       <BrowserRouter>
         
         <Nav />
+        {isAuthenticated ? (<><SistemaGestion /><Logout /></>) : (<Home />)}
 
           <Switch>
             
-              {isAuthenticated ? (<><SistemaGestion /><Logout /></>) : (<Home />)}
-
+              
               <Route path="/infovendedores">
                 <SellersInfo />
               </Route>
@@ -32,7 +32,7 @@ function App() {
               </Route>
 
           </Switch>
-          
+
       </BrowserRouter>
     </>
   );

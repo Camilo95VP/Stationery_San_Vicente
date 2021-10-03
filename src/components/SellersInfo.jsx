@@ -62,7 +62,6 @@ function SellersInfo() {
 
   return (
     <div>
-      <Logout/>
       <div className="cont-table">
         
         <Table striped bordered hover>
