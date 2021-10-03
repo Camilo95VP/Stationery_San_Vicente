@@ -32,7 +32,7 @@ export default function SistemaGestion() {
         <div className="cont">
                 <h1>Sistema de Gestión</h1>
                 <div className="cont-buttons">
-                    <Button variant="outline-primary">Ventas</Button>
+                    <Link to="/Ventas" ><Button variant="outline-primary" className="btn-usuarios">Ventas</Button></Link>
                     <Link to="/list-products" ><Button variant="outline-primary" className="btn-productos">Productos</Button></Link> 
                     <Link to="/infovendedores" ><Button variant="outline-primary"className="btn-usuarios">Usuarios</Button></Link> 
                 </div>

@@ -7,7 +7,7 @@ import SistemaGestion from './components/SistemaGestion'
 import SellersInfo from './components/SellersInfo';
 import ListProducts from "./components/ListProducts";
 import Logout from './components/Logout'
-
+import Ventas from './components/Ventas'
 
 
 
@@ -38,9 +38,9 @@ function App() {
            <Home />
         )}
         </Route>
-        
-          
-
+          <Route path="/Ventas">
+            <Ventas />
+          </Route>
           <Route path="/infovendedores">
             <SellersInfo />
           </Route>
