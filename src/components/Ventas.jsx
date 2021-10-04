@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import { Container, Row } from "react-bootstrap";
-import "../styles/ListProducts.css";
+import "../styles/Ventas.css";
 
 function ListProducts() {
   let productos = [
@@ -36,7 +36,7 @@ function ListProducts() {
 
   return (
     <Fragment>
-      <Container className="mb-2 mt-0">
+      <Container className="mb-2 mt-0 ">
         <Row>
           {productos.map((producto, index) => {
             return (
@@ -61,10 +61,16 @@ function ListProducts() {
                       <span>${producto.precio}</span>
                     </div>
                   </div>
+                  <div className="p-2 edit text-center text-white mt-2 cursor">
+                    <span className="text-uppercase">
+                      
+                      Vender
+                    </span>
+                  </div>
                   <div className="p-3 edit text-center text-white mt-3 cursor">
                     <span className="text-uppercase">
-                      <i className="fas fa-pen"></i>
-                      Editar
+                      
+                      Total vendidos: --
                     </span>
                   </div>
                 </div>
