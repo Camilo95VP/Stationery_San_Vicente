@@ -36,7 +36,7 @@ function ListProducts() {
 
   return (
     <Fragment>
-      <Container className="mb-5 mt-5">
+      <Container className="mb-2 mt-0 ">
         <Row>
           {productos.map((producto, index) => {
             return (

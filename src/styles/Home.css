@@ -18,9 +18,7 @@ body{
 @media(max-width:480px){
     .cont-home{
         width: 80%;
-        position: relative;
-        margin: 0 auto;
-        margin-bottom: 100px;
+        margin: 0 auto;   
     }
     .cont{
         position: relative;

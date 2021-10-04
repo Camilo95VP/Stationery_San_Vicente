@@ -1,6 +1,9 @@
 import React, { Fragment } from "react";
 import { Container, Row } from "react-bootstrap";
 import "../styles/ListProducts.css";
+import Form from 'react-bootstrap/Form';
+import FormControl from 'react-bootstrap/FormControl';
+import Button from 'react-bootstrap/Button'
 
 function ListProducts() {
   let productos = [
@@ -36,7 +39,11 @@ function ListProducts() {
 
   return (
     <Fragment>
-      <Container className="mb-5 mt-5">
+      <Container className="mb-2 mt-0">
+      <Form className="d-flex">
+      <FormControl type="search"placeholder="Search" className="mr-2" aria-label="Search"/>
+         <Button variant="primary">Buscar</Button>
+      </Form>
         <Row>
           {productos.map((producto, index) => {
             return (
