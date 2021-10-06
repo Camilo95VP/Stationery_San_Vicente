@@ -9,8 +9,8 @@ body{
     color: #212529;
     width: 50%;
     margin-left: 120px;
-    margin-top: 200px;
-    font-family:cursive;
+    margin-top: 95px;
+    
     line-height: 3em;
     margin-bottom: 140px;
     text-align: left;
@@ -18,12 +18,13 @@ body{
 @media(max-width:480px){
     .cont-home{
         width: 80%;
-        position: relative;
-        margin: 0 auto;
-        margin-bottom: 100px;
+        margin: 0 auto;   
     }
     .cont{
         position: relative;
         top: 90px;
     }
+}
+.spinner{
+    width: 100%;
 }

@@ -1,39 +1,47 @@
-import "./App.css";
-import Nav from "./shared/Nav";
-import Home from "../src/components/Home";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
-import SellersInfo from "./components/SellersInfo";
+import { useAuth0 } from "@auth0/auth0-react";
+import './App.css';
+import Nav from './shared/Nav'
+import Home from '../src/components/Home'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import SistemaGestion from './components/SistemaGestion'
+import SellersInfo from './components/SellersInfo';
 import ListProducts from "./components/ListProducts";
-import SistemaGestion from "./components/SistemaGestion";
+import Logout from './components/Logout'
+import Ventas from './components/Ventas'
 import Product from "./components/Product";
 
+
 function App() {
+  const { isAuthenticated } = useAuth0();
   return (
-    <>
+    <> 
       <BrowserRouter>
+        
         <Nav />
+        {isAuthenticated ? (<><SistemaGestion /><Logout /></>) : (<Home />)}
 
-        <Switch>
-          <Route path="/" exact>
-            <Home />
-          </Route>
+          <Switch>
+            
+              
+              <Route path="/infovendedores">
+                <SellersInfo />
+              </Route>
 
-          <Route path="/SistemaGestion" exact>
-            <SistemaGestion />
-          </Route>
+              <Route path="/list-products">
+                <ListProducts />
+              </Route>
 
-          <Route path="/infovendedores">
-            <SellersInfo />
-          </Route>
+              <Route path="/Ventas">
+                <Ventas />
+              </Route>
 
-          <Route path="/list-products">
-            <ListProducts />
-          </Route>
+              <Route exact path="/product/:id" component={Product} />
 
-          <Route exact path="/product/:id" component={Product} />
+              <Route path="*" component={Home} />
 
-          <Route path="*" component={Home} />
-        </Switch>
+          </Switch>
+
+
       </BrowserRouter>
     </>
   );

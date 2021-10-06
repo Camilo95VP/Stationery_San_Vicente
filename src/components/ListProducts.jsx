@@ -4,6 +4,10 @@ import { Link } from "react-router-dom";
 import "../styles/ListProducts.css";
 import { getProducts, deleteProduct } from "./ListProductsService.js";
 import Swal from "sweetalert2";
+import Form from 'react-bootstrap/Form';
+import FormControl from 'react-bootstrap/FormControl';
+import Button from 'react-bootstrap/Button'
+
 
 function ListProducts() {
   const [productos, setProductos] = useState(getProducts());
@@ -40,7 +44,11 @@ function ListProducts() {
 
   return (
     <Fragment>
-      <Container className="mb-5 mt-5">
+      <Container className="mb-2 mt-0">
+      <Form className="d-flex">
+      <FormControl type="search"placeholder="Search" className="mr-2" aria-label="Search"/>
+         <Button variant="primary">Buscar</Button>
+      </Form>
         <Row>
           <div className="col-4">
             <Link to="/product/new">

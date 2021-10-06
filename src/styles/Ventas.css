@@ -1,3 +1,6 @@
+.container {
+  margin-top: 110px !important;
+}
 
 .container .card {
   border: none;
@@ -18,7 +21,7 @@
 
 .text1 {
   font-size: 13px;
-  color: black;
+  color: #cbcbcb;
 }
 
 .info {
@@ -32,11 +35,7 @@
 }
 
 .edit {
-  background-color: #0d6fed;
-}
-
-.delete {
-  background-color: #dc3545;
+  background-color: #0d9209;
 }
 
 .edit:hover {
@@ -45,6 +44,6 @@
 
 .cursor {
   cursor: pointer;
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
