@@ -1,17 +1,17 @@
-import './App.css';
-import Nav from './shared/Nav'
-import Home from '../src/components/Home'
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
-import SellersInfo from './components/SellersInfo';
+import "./App.css";
+import Nav from "./shared/Nav";
+import Home from "../src/components/Home";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import SellersInfo from "./components/SellersInfo";
 import ListProducts from "./components/ListProducts";
-import SistemaGestion from './components/SistemaGestion';
+import SistemaGestion from "./components/SistemaGestion";
+import Product from "./components/Product";
 
 function App() {
   return (
     <>
       <BrowserRouter>
-      
-        <Nav />        
+        <Nav />
 
         <Switch>
           <Route path="/" exact>
@@ -19,7 +19,7 @@ function App() {
           </Route>
 
           <Route path="/SistemaGestion" exact>
-            <SistemaGestion/>
+            <SistemaGestion />
           </Route>
 
           <Route path="/infovendedores">
@@ -29,6 +29,10 @@ function App() {
           <Route path="/list-products">
             <ListProducts />
           </Route>
+
+          <Route exact path="/product/:id" component={Product} />
+
+          <Route path="*" component={Home} />
         </Switch>
       </BrowserRouter>
     </>
