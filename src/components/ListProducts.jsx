@@ -1,41 +1,46 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import { Container, Row } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import "../styles/ListProducts.css";
+import { getProducts, deleteProduct } from "./ListProductsService.js";
+import Swal from "sweetalert2";
 import Form from 'react-bootstrap/Form';
 import FormControl from 'react-bootstrap/FormControl';
 import Button from 'react-bootstrap/Button'
 
+
 function ListProducts() {
-  let productos = [
-    {
-      id: 0,
-      nombre: "Cuadernos",
-      precio: 2000,
-      imagen:
-        "https://st.depositphotos.com/1875497/3781/i/600/depositphotos_37810929-stock-photo-books-on-white.jpg",
-    },
-    {
-      id: 1,
-      nombre: "Colores",
-      precio: 5000,
-      imagen:
-        "https://panamericana.vteximg.com.br/arquivos/ids/343890-600-690/ecolapices-faber-castell-supersoft-por-12-unidades-7891360662471.jpg?v=637135805926930000",
-    },
-    {
-      id: 2,
-      nombre: "Resma",
-      precio: 10000,
-      imagen:
-        "https://medios.papeleriamodelo.com/wp-content/uploads/2015/06/resma-carta-reprograf.jpg",
-    },
-    {
-      id: 3,
-      nombre: "Borrador",
-      precio: 1000,
-      imagen:
-        "https://distribuidorasurtitodo.com.co/wp-content/uploads/2020/08/borrador-pelikan-pz-20-grande-unidad.jpg",
-    },
-  ];
+  const [productos, setProductos] = useState(getProducts());
+
+  /*useEffect(() => {
+    const productosActualizados = getProducts();
+    setProductos(productosActualizados);
+    console.log("ghfgh");
+  }, [productos]);*/
+
+  const borrarProducto = (id) => {
+    Swal.fire({
+      title: "¿Esta seguro?",
+      text: "Esta seguro de eliminar el producto",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Si, eliminarlo",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        if (deleteProduct(id)) {
+          const productosActuales = productos.filter(
+            (producto) => producto.id !== id
+          );
+          setProductos(productosActuales);
+          Swal.fire("Eliminado", "El producto ha sido eliminado", "success");
+        } else {
+          Swal.fire("Error", "El producto no ha sido eliminado", "error");
+        }
+      }
+    });
+  };
 
   return (
     <Fragment>
@@ -44,6 +49,13 @@ function ListProducts() {
       <FormControl type="search"placeholder="Search" className="mr-2" aria-label="Search"/>
          <Button variant="primary">Buscar</Button>
       </Form>
+        <Row>
+          <div className="col-4">
+            <Link to="/product/new">
+              <button className="btn btn-lg btn-primary">Nuevo Producto</button>
+            </Link>
+          </div>
+        </Row>
         <Row>
           {productos.map((producto, index) => {
             return (
@@ -58,21 +70,36 @@ function ListProducts() {
                       height="160"
                     />
                     <h5>{`${index + 1}. ${producto.nombre}`}</h5>
-                    {/**
-                      <div className="mt-3 info">
-                        <span className="text1 d-block">SUbtitulo</span>
-                        <span className="text1"> otro</span>
-                      </div>
-                       */}
+                    <div className="mt-3 info">
+                      <span className="text1 d-block">
+                        <b>Cantidad:</b> {producto.cantidad}
+                      </span>
+                    </div>
                     <div className="cost mt-3 text-dark">
                       <span>${producto.precio}</span>
                     </div>
                   </div>
-                  <div className="p-3 edit text-center text-white mt-3 cursor">
-                    <span className="text-uppercase">
-                      <i className="fas fa-pen"></i>
-                      Editar
-                    </span>
+                  <div className="row">
+                    <div className="col-8">
+                      <Link to={`/product/${producto.id}`}>
+                        <div className="p-3 edit text-center text-white mt-3 cursor">
+                          <span className="text-uppercase">
+                            <i className="fas fa-pen"></i>
+                            Editar
+                          </span>
+                        </div>
+                      </Link>
+                    </div>
+                    <div className="col-4">
+                      <div
+                        className="p-3 delete text-center text-white mt-3 cursor"
+                        onClick={(e) => borrarProducto(producto.id)}
+                      >
+                        <span className="text-uppercase">
+                          <i className="far fa-trash-alt"></i>
+                        </span>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
