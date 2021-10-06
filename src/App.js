@@ -8,7 +8,7 @@ import SellersInfo from './components/SellersInfo';
 import ListProducts from "./components/ListProducts";
 import Logout from './components/Logout'
 import Ventas from './components/Ventas'
-
+import Product from "./components/Product";
 
 
 function App() {
@@ -35,7 +35,12 @@ function App() {
                 <Ventas />
               </Route>
 
+              <Route exact path="/product/:id" component={Product} />
+
+              <Route path="*" component={Home} />
+
           </Switch>
+
 
       </BrowserRouter>
     </>

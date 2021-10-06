@@ -1,5 +1,4 @@
 
-
 .container .card {
   border: none;
   outline: none;
@@ -19,7 +18,7 @@
 
 .text1 {
   font-size: 13px;
-  color: #cbcbcb;
+  color: black;
 }
 
 .info {
@@ -33,6 +32,10 @@
 }
 
 .edit {
+  background-color: #0d6fed;
+}
+
+.delete {
   background-color: #dc3545;
 }
 
