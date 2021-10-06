@@ -6,7 +6,7 @@ import swal from 'sweetalert'
 import { Spinner } from "react-bootstrap";
 import {Link} from 'react-router-dom'
 import Swal from 'sweetalert2/dist/sweetalert2.js'
-
+// import mandalorian from '../logo/mandalorian.gif'
 
 
 export default function SistemaGestion() {  
@@ -35,7 +35,9 @@ export default function SistemaGestion() {
   
 
   if (isLoading) {
-    return <div className="spinner"><Button variant="primary" disabled>
+    return <div className="spinner">
+      {/* <img className="mando" src= {mandalorian} alt=""/> */}
+      <Button variant="primary" disabled>
       
     <Spinner
       as="span"
@@ -52,7 +54,8 @@ export default function SistemaGestion() {
     
     isAuthenticated && (
      
-      <div>
+      <div className="cont-father">
+        
         <div className="cont-profile">
             <img className="imp-p" src={user.picture} alt={user.name} />
             <p>{user.email}</p>
@@ -66,7 +69,7 @@ export default function SistemaGestion() {
 
                 </div>
             </div>
-           
+            
       </div>
   
      

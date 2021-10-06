@@ -5,13 +5,15 @@ import LoginButton from './LoginButton'
 import { useAuth0 } from "@auth0/auth0-react";
 import { Spinner } from "react-bootstrap";
 import Button from 'react-bootstrap/Button'
+import mandalorian from '../logo/mandalorian.gif'
 
 export default function Home() {
     const {isLoading } = useAuth0();
 
     if (isLoading) {
         return <div className="spinner">
-            <h3>Estamos trabajando para ti!</h3>
+            <img src= {mandalorian} alt="img" />
+            <h3>Ya casi!</h3>
         <Button variant="primary" disabled>
         <Spinner as="span"  animation="grow" size="sm" role="status" aria-hidden="true"/>Loading...</Button></div>;
       }
