@@ -37,10 +37,8 @@ function App() {
 
               <Route exact path="/product/:id" component={Product} />
 
-              <Route path="*" component={Home} />
-
+              
           </Switch>
-
 
       </BrowserRouter>
     </>

@@ -19,7 +19,8 @@ export default function SistemaGestion() {
     imageWidth: 400,
     imageHeight: 200,
     imageAlt: 'Custom image',
-    padding: '3em'
+    padding: '3em',
+
   })
   swal({
     
