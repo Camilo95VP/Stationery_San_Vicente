@@ -6,7 +6,7 @@ import swal from 'sweetalert'
 import { Spinner } from "react-bootstrap";
 import {Link} from 'react-router-dom'
 import Swal from 'sweetalert2/dist/sweetalert2.js'
-
+// import mandalorian from '../logo/mandalorian.gif'
 
 
 export default function SistemaGestion() {  
@@ -15,19 +15,20 @@ export default function SistemaGestion() {
   Swal.fire({
     
     title: 'Ya puedes empezar a trabajar!',
-    imageUrl: 'https://c.tenor.com/4j-z9eTrh1UAAAAi/libre.gif',
-    imageWidth: 400,
+    imageUrl: 'https://c.tenor.com/4P02Cdfd26MAAAAi/baby-yoda-so-cute.gif',
+    imageWidth: 300,
     imageHeight: 200,
     imageAlt: 'Custom image',
-    padding: '3em'
+    padding: '3em',
+    button: false,
   })
   swal({
     
-    imageUrl: `Hola ${user.picture},`,
-    title: `Hola ${user.name},`,
+    
+    title: `${user.name},`,
     text: "Registro Exitoso",
     icon: "success",
-    button: "ok",
+    button: false,
     
   });
   
@@ -35,7 +36,9 @@ export default function SistemaGestion() {
   
 
   if (isLoading) {
-    return <div className="spinner"><Button variant="primary" disabled>
+    return <div className="spinner">
+      {/* <img className="mando" src= {mandalorian} alt=""/> */}
+      <Button variant="primary" disabled>
       
     <Spinner
       as="span"
@@ -52,7 +55,8 @@ export default function SistemaGestion() {
     
     isAuthenticated && (
      
-      <div>
+      <div className="cont-father">
+        
         <div className="cont-profile">
             <img className="imp-p" src={user.picture} alt={user.name} />
             <p>{user.email}</p>
@@ -66,7 +70,7 @@ export default function SistemaGestion() {
 
                 </div>
             </div>
-           
+            
       </div>
   
      
