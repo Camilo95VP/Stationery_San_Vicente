@@ -15,20 +15,20 @@ export default function SistemaGestion() {
   Swal.fire({
     
     title: 'Ya puedes empezar a trabajar!',
-    imageUrl: 'https://c.tenor.com/4j-z9eTrh1UAAAAi/libre.gif',
-    imageWidth: 400,
+    imageUrl: 'https://c.tenor.com/4P02Cdfd26MAAAAi/baby-yoda-so-cute.gif',
+    imageWidth: 300,
     imageHeight: 200,
     imageAlt: 'Custom image',
     padding: '3em',
-
+    button: false,
   })
   swal({
     
-    imageUrl: `Hola ${user.picture},`,
-    title: `Hola ${user.name},`,
+    
+    title: `${user.name},`,
     text: "Registro Exitoso",
     icon: "success",
-    button: "ok",
+    button: false,
     
   });
   
