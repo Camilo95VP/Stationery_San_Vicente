@@ -1,4 +1,5 @@
 var express = require("express");
+var cors = require("cors");
 var mongoose = require("mongoose");
 var app = express();
 
@@ -8,12 +9,19 @@ const dBase = "GestionSanVicente";
 
 const productsRoutes = require("./routes/products");
 
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 mongoose
   .connect(
-    "mongodb+srv://"+userDB+":"+passDB+"@sanvicente.l1mmx.mongodb.net/"+dBase+"?retryWrites=true&w=majority"
+    "mongodb+srv://" +
+      userDB +
+      ":" +
+      passDB +
+      "@sanvicente.l1mmx.mongodb.net/" +
+      dBase +
+      "?retryWrites=true&w=majority"
   )
   .then(() => {
     console.log("Estamos conectados");
