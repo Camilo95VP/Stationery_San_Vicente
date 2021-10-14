@@ -1,5 +1,4 @@
 var express = require("express");
-var cors = require("cors");
 var mongoose = require("mongoose");
 const cors = require("cors");
 var app = express();
