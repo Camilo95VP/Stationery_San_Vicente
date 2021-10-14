@@ -1,3 +1,6 @@
+import axios from "axios";
+import { Path } from "../config";
+
 let Productos = [
   {
     id: 0,
@@ -38,12 +41,11 @@ let Productos = [
 ];
 
 export function getProducts() {
-  return Productos;
+  return axios.get(`${Path.url}/products`);
 }
 
 export function getProduct(id) {
-  id = Number(id);
-  return Productos.find((producto) => producto.id === id);
+  return axios.get(`${Path.url}/products/${id}`);
 }
 
 export function setProduct(producto) {

@@ -1,13 +1,24 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { getProduct, setProduct } from "./ListProductsService";
 import "../styles/Product.css";
+import imageNotFound from "../assets/img/undraw_Web_search_re_efla.svg";
 import { Container, Form } from "react-bootstrap";
 import Swal from "sweetalert2";
 
 const Product = () => {
   let { id } = useParams();
-  const [producto, setProducto] = useState(id !== "new" ? getProduct(id) : {});
+  const [producto, setProducto] = useState({});
+
+  useEffect(() => {
+    getProduct(id)
+      .then((res) => {
+        setProducto(res.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, []);
 
   const handleInputChange = (event) => {
     setProducto({
@@ -36,7 +47,7 @@ const Product = () => {
         });
         setProducto({
           ...producto,
-          ["imagen"]: e.target.result,
+          ["url"]: e.target.result,
         });
       };
       reader.readAsDataURL(file);
@@ -45,12 +56,20 @@ const Product = () => {
 
   const guardar = (event) => {
     event.preventDefault();
-    if (producto.id === undefined) producto.id = "new";
-    setProduct(producto);
-    Swal.fire({
-      icon: "success",
-      title: producto.id === "new" ? "Producto Creado" : "Producto Actualizado",
-    });
+    if (producto._id === undefined) producto._id = "new";
+    if (producto.cantity < 0) {
+      Swal.fire({
+        icon: "warning",
+        title: "La cantidad debe ser igual o mayor a 0",
+      });
+    } else {
+      setProduct(producto);
+      Swal.fire({
+        icon: "success",
+        title:
+          producto.id === "new" ? "Producto Creado" : "Producto Actualizado",
+      });
+    }
   };
 
   return (
@@ -65,40 +84,40 @@ const Product = () => {
                     <input
                       type="text"
                       className="form-control"
-                      id="nombre"
-                      name="nombre"
+                      id="title"
+                      name="title"
                       placeholder="Nombre"
                       onChange={handleInputChange}
-                      value={producto.nombre}
+                      value={producto.title}
                     />
                   </div>
                   <div className="mb-3">
                     <input
                       type="number"
                       className="form-control"
-                      id="precio"
-                      name="precio"
+                      id="price"
+                      name="price"
                       placeholder="Precio"
                       onChange={handleInputChange}
-                      value={producto.precio}
+                      value={producto.price}
                     />
                   </div>
                   <div className="mb-3">
                     <input
                       type="number"
                       className="form-control"
-                      id="cantidad"
-                      name="cantidad"
+                      id="cantity"
+                      name="cantity"
                       placeholder="Cantidad"
                       onChange={handleInputChange}
-                      value={producto.cantidad}
+                      value={producto.cantity}
                     />
                   </div>
                   <div className="mb-3">
                     <button
                       className="btn btn-secondary btn-lg"
                       type="button"
-                      id="imagen"
+                      id="url"
                       onClick={buscarImagen}
                     >
                       Imagen
@@ -120,13 +139,26 @@ const Product = () => {
                   <div className="mb-3">
                     <textarea
                       className="form-control"
-                      id="descripcion"
-                      name="descripcion"
+                      id="description"
+                      name="description"
                       rows="3"
                       placeholder="Descripcion"
                       onChange={handleInputChange}
-                      value={producto.descripcion}
+                      value={producto.description}
                     ></textarea>
+                  </div>
+                  <div class="form-group form-check">
+                    <input
+                      type="checkbox"
+                      class="form-check-input"
+                      id="active"
+                      name="active"
+                      onChange={handleInputChange}
+                      value={producto.active}
+                    />
+                    <label class="form-check-label" for="exampleCheck1">
+                      {producto.active ? "Desactivar" : "Activar"}
+                    </label>
                   </div>
                   <button className="btn btn-success btn-block" type="submit">
                     Guardar
@@ -139,26 +171,36 @@ const Product = () => {
           <div className="col-md-4">
             <div className="card text-dark bg-light text-center">
               <img
-                src={producto.imagen}
+                src={producto.url ? producto.url : imageNotFound}
                 className="card-img-top"
-                alt={producto.nombre}
+                alt={producto.title}
               />
               <div className="card-body">
                 <h3>
-                  <b>Nombre:</b> {producto.nombre}
+                  <b>Nombre:</b> {producto.title}
                 </h3>
                 <p>
-                  <b>Precio:</b> ${producto.precio}
+                  <b>Precio:</b> ${producto.price}
                 </p>
                 <p>
-                  <b>Cantidad:</b> {producto.cantidad}
+                  <b>Cantidad:</b> {producto.cantity}
                 </p>
                 <p>
                   <b>Categoria:</b>
                 </p>
                 <p>
-                  <b>Descripcion:</b> {producto.descripcion}
+                  <b>Descripcion:</b> {producto.description}
                 </p>
+                <div
+                  className={
+                    producto.active
+                      ? "alert alert-success"
+                      : "alert alert-danger"
+                  }
+                  role="alert"
+                >
+                  {producto.active ? "Activo" : "Inactivo"}
+                </div>
               </div>
             </div>
           </div>

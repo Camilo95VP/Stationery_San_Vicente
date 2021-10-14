@@ -1,22 +1,26 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { Container, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "../styles/ListProducts.css";
+import imageNotFound from "../assets/img/undraw_Web_search_re_efla.svg";
 import { getProducts, deleteProduct } from "./ListProductsService.js";
 import Swal from "sweetalert2";
-import Form from 'react-bootstrap/Form';
-import FormControl from 'react-bootstrap/FormControl';
-import Button from 'react-bootstrap/Button'
-
+import Form from "react-bootstrap/Form";
+import FormControl from "react-bootstrap/FormControl";
+import Button from "react-bootstrap/Button";
 
 function ListProducts() {
-  const [productos, setProductos] = useState(getProducts());
+  const [productos, setProductos] = useState([]);
 
-  /*useEffect(() => {
-    const productosActualizados = getProducts();
-    setProductos(productosActualizados);
-    console.log("ghfgh");
-  }, [productos]);*/
+  useEffect(() => {
+    getProducts()
+      .then((res) => {
+        setProductos(res.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, []);
 
   const borrarProducto = (id) => {
     Swal.fire({
@@ -45,10 +49,17 @@ function ListProducts() {
   return (
     <Fragment>
       <Container className="mb-2 mt-0">
-      <Form className="d-flex">
-      <FormControl type="search"placeholder="Search" className="mr-2" aria-label="Search"/>
-         <Button variant="primary">Buscar</Button>
-      </Form>
+        <Row className="mb-2">
+          <Form className="d-flex">
+            <FormControl
+              type="search"
+              placeholder="Search"
+              className="mr-2"
+              aria-label="Search"
+            />
+            <Button variant="primary">Buscar</Button>
+          </Form>
+        </Row>
         <Row>
           <div className="col-4">
             <Link to="/product/new">
@@ -59,29 +70,39 @@ function ListProducts() {
         <Row>
           {productos.map((producto, index) => {
             return (
-              <div className="col-md-4" key={producto.id}>
+              <div className="col-md-4" key={producto._id}>
                 <div className="card mt-3">
                   <div className="product align-items-center p-2 text-center">
                     <img
-                      src={producto.imagen}
-                      alt=""
+                      src={producto.url ? producto.url : imageNotFound}
+                      alt={producto.title}
                       className="rounded"
                       width="160"
                       height="160"
                     />
-                    <h5>{`${index + 1}. ${producto.nombre}`}</h5>
+                    <h5>{`${index + 1}. ${producto.title}`}</h5>
                     <div className="mt-3 info">
                       <span className="text1 d-block">
-                        <b>Cantidad:</b> {producto.cantidad}
+                        <b>Cantidad:</b> {producto.cantity}
                       </span>
                     </div>
                     <div className="cost mt-3 text-dark">
-                      <span>${producto.precio}</span>
+                      <span>${producto.price}</span>
+                    </div>
+                    <div
+                      className={
+                        producto.active
+                          ? "alert alert-success"
+                          : "alert alert-danger"
+                      }
+                      role="alert"
+                    >
+                      {producto.active ? "Activo" : "Inactivo"}
                     </div>
                   </div>
                   <div className="row">
                     <div className="col-8">
-                      <Link to={`/product/${producto.id}`}>
+                      <Link to={`/product/${producto._id}`}>
                         <div className="p-3 edit text-center text-white mt-3 cursor">
                           <span className="text-uppercase">
                             <i className="fas fa-pen"></i>
@@ -93,7 +114,7 @@ function ListProducts() {
                     <div className="col-4">
                       <div
                         className="p-3 delete text-center text-white mt-3 cursor"
-                        onClick={(e) => borrarProducto(producto.id)}
+                        onClick={(e) => borrarProducto(producto._id)}
                       >
                         <span className="text-uppercase">
                           <i className="far fa-trash-alt"></i>
