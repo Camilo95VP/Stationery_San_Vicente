@@ -67,13 +67,25 @@ class AgregarUsuario extends Component{
         }
     
       }
-
+      editUser(id) {
+        fetch(`http://localhost:3002/api/usuarios${id}`)
+          .then(res => res.json())
+          .then(data => {
+            console.log(data);
+            this.setState({
+              nombre: data.nombre,
+              email: data.email,
+              estado: data.estado,
+              _id: data._id
+            });
+          });
+      }
       componentDidMount() {
         this.fetchTasks();
       }
     
       fetchTasks() {
-        fetch('http://localhost:3002/api/usuarios')
+        fetch(`http://localhost:3002/api/usuarios`)
           .then(res => res.json())
           .then(data => {
             this.setState({usuarios: data});
@@ -117,7 +129,7 @@ render(){
           <tbody>
             {this.state.usuarios.map(usuario => {
              return (
-                <tr>
+                <tr key={usuario._id}>
                   <td>{usuario.id} </td>
                   <td>{usuario.nombre} </td>
                   <td>{usuario.apellido} </td>
@@ -129,7 +141,7 @@ render(){
                       </Form.Select>
                   </td>
                   <td>
-                      <Button variant="light">
+                      <Button variant="light" onClick={this.editUser}>
                               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
                               <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
                               </svg>
