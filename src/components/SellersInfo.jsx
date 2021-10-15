@@ -4,7 +4,7 @@ import "../styles/SellersInfo.css";
 
 import Form from 'react-bootstrap/Form'
 import Button from "react-bootstrap/Button";
-import Logout from "./Logout";
+
 import { Link } from "react-router-dom";
 
 function SellersInfo() {
@@ -68,7 +68,7 @@ function SellersInfo() {
         <Table striped bordered hover>
           <thead>
             <tr>
-              <th>Id</th>
+
               <th>Nombre</th>
               <th>Apellido</th>
               <th>Estado</th>

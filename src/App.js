@@ -4,7 +4,6 @@ import Nav from './shared/Nav'
 import Home from '../src/components/Home'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import SistemaGestion from './components/SistemaGestion'
-import SellersInfo from './components/SellersInfo';
 import ListProducts from "./components/ListProducts";
 import Logout from './components/Logout'
 import Ventas from './components/Ventas'
@@ -26,8 +25,8 @@ function App() {
           <Switch>
             
               
-              <Route path="/infovendedores">
-                <SellersInfo />
+              <Route path="/AgregarUsuario">
+              <AgregarUsuario />
               </Route>
 
               <Route path="/list-products">
@@ -40,9 +39,6 @@ function App() {
 
               <Route exact path="/product/:id" component={Product} />
 
-              <Route path ="/AgregarUsuario">
-                <AgregarUsuario />
-              </Route>
               
           </Switch>
 
