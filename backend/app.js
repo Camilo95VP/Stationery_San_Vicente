@@ -9,6 +9,7 @@ const dBase = "GestionSanVicente";
 
 const productsRoutes = require("./routes/products");
 const categoriaRoutes = require("./routes/categoria");
+const usuarioRoutes = require("./routes/usuarios");
 
 app.use(cors());
 app.use(express.json());
@@ -31,5 +32,5 @@ mongoose
 
 app.use("/api/products", productsRoutes);
 app.use("/api/categoria", categoriaRoutes);
-
+app.use("/api/usuarios",usuarioRoutes);
 module.exports = app;

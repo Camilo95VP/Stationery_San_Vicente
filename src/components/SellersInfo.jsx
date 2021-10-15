@@ -5,7 +5,7 @@ import "../styles/SellersInfo.css";
 import Form from 'react-bootstrap/Form'
 import Button from "react-bootstrap/Button";
 import Logout from "./Logout";
-
+import { Link } from "react-router-dom";
 
 function SellersInfo() {
 
@@ -62,6 +62,7 @@ function SellersInfo() {
 
   return (
     <div>
+      
       <div className="cont-table">
         
         <Table striped bordered hover>
@@ -99,7 +100,9 @@ function SellersInfo() {
             })}
           </tbody>
         </Table>
-        <Button variant="success">Actualizar</Button>
+        <Button variant="success">Actualizar</Button>{' '}
+        
+        <Link to="/AgregarUsuario"><Button href= "#AgregarUsuario"variant="primary">Agregar Usuario</Button>{' '}</Link>
       </div>
     </div>
   );

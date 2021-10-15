@@ -9,6 +9,9 @@ import ListProducts from "./components/ListProducts";
 import Logout from './components/Logout'
 import Ventas from './components/Ventas'
 import Product from "./components/Product";
+import AgregarUsuario from "./components/AgregarUsuario";
+
+
 
 
 function App() {
@@ -37,6 +40,9 @@ function App() {
 
               <Route exact path="/product/:id" component={Product} />
 
+              <Route path ="/AgregarUsuario">
+                <AgregarUsuario />
+              </Route>
               
           </Switch>
 

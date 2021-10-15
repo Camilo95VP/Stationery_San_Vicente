@@ -1,16 +1,15 @@
 const mongoose = require("mongoose");
 
 const producto = mongoose.Schema({
-  title: { type: String, required: true },
+  title: { type: String},
   description: { type: String },
-  price: { type: Number, required: true },
-  url: { type: String, required: true },
+  price: { type: Number},
+  url: { type: String},
   categoria: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Categoria",
-    required: true,
+    ref: "Categoria"
   },
-  disponible: { type: Boolean, required: true },
+  disponible: { type: Boolean},
 });
 
 module.exports = mongoose.model("Producto", producto);
