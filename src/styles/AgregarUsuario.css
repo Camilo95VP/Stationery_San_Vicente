@@ -1,0 +1,38 @@
+.table>:not(caption)>*>* {
+    padding: .5rem .5rem;
+    background-color: var(--bs-table-bg);
+    border-bottom-width: 1px;
+    box-shadow: inset 0 0 0 9999px var(--bs-table-accent-bg);
+    justify-content: center;
+    text-align: center;
+}
+.break{
+    background-color: rgb(58, 58, 58);
+    height: 1px;
+    margin-bottom: 30px;
+}
+.boton{
+    text-align: center;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.btn-primary{
+    margin-right: 40px;
+}
+.cont-icons{
+    
+    margin-top: 15px;
+}
+.father-cont{
+    margin-top: 0px;
+    width: 100%;
+    display: flex;
+}
+.father-cont h2{
+   margin-left: 650px;
+}
+.arrow{
+    width: 100%;
+    text-align: center;
+}
