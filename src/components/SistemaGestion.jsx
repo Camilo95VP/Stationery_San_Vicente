@@ -2,7 +2,7 @@ import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import Button from 'react-bootstrap/Button'
 import '../styles/SistemaGestion.css'
-import swal from 'sweetalert'
+// import swal from 'sweetalert'
 import { Spinner } from "react-bootstrap";
 import {Link} from 'react-router-dom'
 import Swal from 'sweetalert2/dist/sweetalert2.js'
@@ -22,15 +22,15 @@ export default function SistemaGestion() {
     padding: '3em',
     button: false,
   })
-  swal({
+  // swal({
     
     
-    title: `${user.name},`,
-    text: "Registro Exitoso",
-    icon: "success",
-    button: false,
+  //   title: `${user.name},`,
+  //   text: "Registro Exitoso",
+  //   icon: "success",
+  //   button: false,
     
-  });
+  // });
   
   
   
@@ -66,7 +66,7 @@ export default function SistemaGestion() {
 
                     <Link to="/Ventas" ><Button variant="primary" className="btn-usuarios">Ventas</Button></Link>
                     <Link to="/list-products" ><Button variant="primary" className="btn-productos">Productos</Button></Link> 
-                    <Link to="/infovendedores" ><Button variant="primary"className="btn-usuarios">Usuarios</Button></Link> 
+                    <Link to="/AgregarUsuario" ><Button variant="primary"className="btn-usuarios">Usuarios</Button></Link> 
 
                 </div>
             </div>

@@ -1,10 +1,10 @@
 .cont-buttonn{
     text-align: end;
     position: relative;
-    bottom: 155px;
+    bottom: 70px;
     padding: 7px;
-    width: 100px;
-    margin: 0px 10px 0px 0px;
+    width: 200px;
+    left: 300px;
     float: right;
 }
 @media(max-width: 480px){

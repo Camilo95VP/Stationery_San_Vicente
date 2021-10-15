@@ -18,16 +18,16 @@ router.get('/:id', async (req, res) => {
 
 // ADD a new task
 router.post('/', async (req, res) => {
-  const { nombre, apellido,estado } = req.body;
-  const task = new Usuario({nombre,apellido,estado});
+  const { nombre, email,estado } = req.body;
+  const task = new Usuario({nombre,email,estado});
   await task.save();
   res.json({status: 'User Saved'});
 });
 
 // UPDATE a new task
 router.put('/:id', async (req, res) => {
-  const { nombre, apellido,estado } = req.body;
-  const newTask = {nombre, apellido,estado};
+  const { nombre, email,estado } = req.body;
+  const newTask = {nombre, email,estado};
   await Usuario.findByIdAndUpdate(req.params.id, newTask);
   res.json({status: 'User Updated'});
 });
