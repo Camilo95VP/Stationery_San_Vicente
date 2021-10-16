@@ -33,15 +33,17 @@ function ListProducts() {
       confirmButtonText: "Si, eliminarlo",
     }).then((result) => {
       if (result.isConfirmed) {
-        if (deleteProduct(id)) {
-          const productosActuales = productos.filter(
-            (producto) => producto.id !== id
-          );
-          setProductos(productosActuales);
-          Swal.fire("Eliminado", "El producto ha sido eliminado", "success");
-        } else {
-          Swal.fire("Error", "El producto no ha sido eliminado", "error");
-        }
+        deleteProduct(id)
+          .then((res) => {
+            const productosActuales = productos.filter(
+              (producto) => producto._id !== id
+            );
+            setProductos(productosActuales);
+            Swal.fire("Eliminado", "El producto ha sido eliminado", "success");
+          })
+          .catch((err) => {
+            Swal.fire("Error", "El producto no ha sido eliminado", "error");
+          });
       }
     });
   };
@@ -87,18 +89,20 @@ function ListProducts() {
                       </span>
                     </div>
                     <div className="cost mt-3 text-dark">
-                      <span>${producto.price}</span>
+                      <span>$ {producto.price}</span>
                     </div>
+                    {/*
                     <div
                       className={
-                        producto.active
+                        producto.disponible
                           ? "alert alert-success"
                           : "alert alert-danger"
                       }
                       role="alert"
                     >
-                      {producto.active ? "Activo" : "Inactivo"}
+                      {producto.disponible ? "Activo" : "Inactivo"}
                     </div>
+                    */}
                   </div>
                   <div className="row">
                     <div className="col-8">
