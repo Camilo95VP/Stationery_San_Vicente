@@ -8,7 +8,9 @@ import ListProducts from "./components/ListProducts";
 import Logout from './components/Logout'
 import Product from "./components/Product";
 import AgregarUsuario from "./components/AgregarUsuario";
+
 import AgregarVentas from "./components/AgregarVentas";
+
 
 
 
@@ -32,7 +34,9 @@ function App() {
                 <ListProducts />
               </Route>
 
+
               <Route path="/AgregarVentas">
+
                 <AgregarVentas />
               </Route>
 

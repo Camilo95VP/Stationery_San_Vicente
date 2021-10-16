@@ -7,12 +7,16 @@ import Table from "react-bootstrap/Table"
 import swal from 'sweetalert'
 import Swal from "sweetalert2";
 
+import FormControl from "react-bootstrap/FormControl";
+
+
 class AgregarVentas extends Component{
     constructor(props) {
         super(props);
         this.state = {
           producto: '',
           cliente: '',
+
           idCliente:'',
           vendedor:'',
           precio:'',
@@ -68,7 +72,9 @@ class AgregarVentas extends Component{
             .then(res => res.json())
             
             .then(data => {
+
               this.setState({_id: '',producto: '', cliente: '',idCliente:'',vendedor:'',precio:'',cantidad:''});
+
               this.fetchTasks();
             });
             swal({
@@ -101,7 +107,9 @@ class AgregarVentas extends Component{
                 
               });
               
+
               this.setState({producto: '', cliente: '',idCliente:'',vendedor:'',precio:'',cantidad:''});
+
               this.fetchTasks();
             })
             .catch(err => console.error(err));
@@ -116,7 +124,9 @@ class AgregarVentas extends Component{
             this.setState({
               producto: data.producto,
               cliente: data.cliente,
+
               idCliente:data.idCliente,
+
               vendedor: data.vendedor,
               precio: data.precio,
               cantidad: data.cantidad,
@@ -222,10 +232,12 @@ class AgregarVentas extends Component{
                       <Form.Label>Cliente</Form.Label>
                       <Form.Control name="cliente" onChange={this.handleChange} value={this.state.cliente} type="text" placeholder="Ingrese cliente" />
                   </Form.Group>
+
                   <Form.Group className="mb-3" controlId="formBasicEmail">
                       <Form.Label>ID Ciente</Form.Label>
                       <Form.Control name="idCliente" onChange={this.handleChange} value={this.state.idCliente} type="text" placeholder="Ingrese identificador cliente" />
                   </Form.Group>
+
       
                   <Form.Group className="mb-3" controlId="formBasicPassword">
                       <Form.Label>Vendedor</Form.Label>
@@ -276,6 +288,7 @@ class AgregarVentas extends Component{
   
   </div>
             <div className="search">    
+
             <input class="form-control"  placeholder="Buscar por cliente, ID cliente o id venta" value={this.state.text} onChange={(text) => this.filter(text)}/>
             </div>
   <Table striped bordered hover>

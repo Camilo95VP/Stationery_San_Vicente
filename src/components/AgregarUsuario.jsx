@@ -29,7 +29,7 @@ class AgregarUsuario extends Component{
           swal({
     
           
-            title: "Primero edite el usuario y luego lo actualiza",
+            title: "Primero seleccione editar usuario y luego lo actualiza",
             icon: "error",
             button: true,
             
