@@ -5,6 +5,7 @@ import Button from 'react-bootstrap/Button'
 import {Component} from 'react'
 import Table from "react-bootstrap/Table"
 import swal from 'sweetalert'
+import Swal from "sweetalert2";
 import "../styles/AgregarUsuario.css"
 
 
@@ -15,11 +16,26 @@ class AgregarUsuario extends Component{
           nombre: '',
           email: '',
           estado: '',
-          _id: '',
-          usuarios: []
+          usuarios: [],
+          _id: ''
         };
+      
         this.handleChange = this.handleChange.bind(this);
         this.addUser = this.addUser.bind(this);
+      }
+
+      actualizar(){
+       
+          swal({
+    
+          
+            title: "Primero edite el usuario y luego lo actualiza",
+            icon: "error",
+            button: true,
+            
+          });
+        
+        
       }
     
       handleChange(e) {
@@ -32,7 +48,7 @@ class AgregarUsuario extends Component{
       addUser(e) {
         e.preventDefault();
         if(this.state._id) {
-          fetch(`http://localhost:3002/api/usuarios${this.state._id}`, {
+          fetch(`http://localhost:3002/api/usuarios/${this.state._id}`, {
             method: 'PUT',
             body: JSON.stringify({
               nombre: this.state.nombre,
@@ -45,11 +61,20 @@ class AgregarUsuario extends Component{
             }
           })
             .then(res => res.json())
+            
             .then(data => {
-              window.M.toast({html: 'User Updated'});
-              this.setState({_id: '', nombre: '', email: '',estado: ''});
+              this.setState({_id: '',nombre: '', email: '',estado: ''});
               this.fetchTasks();
             });
+            swal({
+    
+    
+              title: "Usuario Actualizado",
+              icon: "success",
+              button: true,
+              
+            });
+            
         } else {
           fetch('http://localhost:3002/api/usuarios', {
             method: 'POST',
@@ -70,6 +95,7 @@ class AgregarUsuario extends Component{
                 button: true,
                 
               });
+              
               this.setState({nombre: '', email: '',estado: ''});
               this.fetchTasks();
             })
@@ -78,7 +104,7 @@ class AgregarUsuario extends Component{
     
       }
       editUser(id) {
-        fetch(`http://localhost:3002/api/usuarios${id}`)
+        fetch(`http://localhost:3002/api/usuarios/${id}`)
           .then(res => res.json())
           .then(data => {
             console.log(data);
@@ -90,12 +116,47 @@ class AgregarUsuario extends Component{
             });
           });
       }
+
+      deleteUser(id) {
+        if(Swal.fire({
+          title: 'Esta seguro?',
+          text: "Puedes revertir los cambios!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Si, eliminarlo!'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            Swal.fire(
+              'Eliminado!',
+              'El usuario ha sido eliminado.',
+              'success'
+            )
+          }
+        })) {
+          fetch(`http://localhost:3002/api/usuarios/${id}`, {
+            method: 'DELETE',
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            }
+          })
+            .then(res => res.json())
+            .then(data => {
+              console.log(data);
+              
+              this.fetchTasks();
+            });
+        }
+      }
+
       componentDidMount() {
         this.fetchTasks();
       }
     
       fetchTasks() {
-        fetch('http://localhost:3002/api/usuarios')
+        fetch(`http://localhost:3002/api/usuarios`)
           .then(res => res.json())
           .then(data => {
             this.setState({usuarios: data});
@@ -152,6 +213,10 @@ render(){
             <Button variant="primary" type="submit" className="justify-content center" >
                 Agregar Usuario
             </Button>
+
+            <Button variant="success" type="submit" className="justify-content center" onClick={this.actualizar}>
+                Actualizar
+            </Button>
             </div>
 </Form>
 <br />
@@ -170,7 +235,7 @@ render(){
           <tbody>
             {this.state.usuarios.map(usuario => {
              return (
-                <tr>
+                <tr key={usuario._id}>
                   
                   <td>{usuario.nombre} </td>
                   <td>{usuario.email} </td>
@@ -180,8 +245,8 @@ render(){
                               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
                               <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
                               </svg>
-                      </Button>{' '}{' '}
-                      <Button variant="danger"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                      </Button>{' '}
+                      <Button variant="danger" onClick={() => this.deleteUser(usuario._id)}><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
                               <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
                               </svg>
                       </Button>
