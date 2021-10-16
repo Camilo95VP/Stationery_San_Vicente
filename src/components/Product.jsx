@@ -77,6 +77,11 @@ const Product = () => {
       <Container className="mt-5 mb-5">
         <div className="row justify-content-center">
           <div className="col-md-4">
+            <h1>Producto</h1>
+          </div>
+        </div>
+        <div className="row justify-content-center">
+          <div className="col-md-4">
             <div className="card text-dark bg-light mb-2">
               <div className="card-body">
                 <Form onSubmit={guardar}>

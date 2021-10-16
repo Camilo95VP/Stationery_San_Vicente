@@ -61,7 +61,7 @@ function ListProducts() {
           </Form>
         </Row>
         <Row>
-          <div className="col-4">
+          <div className="col-12">
             <Link to="/product/new">
               <button className="btn btn-lg btn-primary">Nuevo Producto</button>
             </Link>
@@ -103,7 +103,7 @@ function ListProducts() {
                   <div className="row">
                     <div className="col-8">
                       <Link to={`/product/${producto._id}`}>
-                        <div className="p-3 edit text-center text-white mt-3 cursor">
+                        <div className="p-3 edit text-center mt-3 cursor bg-success text-white">
                           <span className="text-uppercase">
                             <i className="fas fa-pen"></i>
                             Editar
