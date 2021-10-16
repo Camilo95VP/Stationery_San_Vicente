@@ -6,7 +6,7 @@ import {Component} from 'react'
 import Table from "react-bootstrap/Table"
 import swal from 'sweetalert'
 import Swal from "sweetalert2";
-import "../styles/AgregarVentas.css"
+
 import FormControl from "react-bootstrap/FormControl";
 
 
@@ -16,10 +16,14 @@ class AgregarVentas extends Component{
         this.state = {
           producto: '',
           cliente: '',
+
+          idCliente:'',
           vendedor:'',
           precio:'',
           cantidad: '',
           ventas: [],
+          textBuscar: '',
+          productoBackup:[],
           _id: ''
         };
       
@@ -38,7 +42,6 @@ class AgregarVentas extends Component{
             
           });
         
-        
       }
     
       handleChange(e) {
@@ -56,6 +59,7 @@ class AgregarVentas extends Component{
             body: JSON.stringify({
               producto: this.state.producto,
               cliente: this.state.cliente,
+              idCliente:this.state.idCliente,
               vendedor: this.state.vendedor,
               precio: this.state.precio,
               cantidad: this.state.cantidad
@@ -68,7 +72,9 @@ class AgregarVentas extends Component{
             .then(res => res.json())
             
             .then(data => {
-              this.setState({_id: '',producto: '', cliente: '',vendedor:'',precio:'',cantidad:''});
+
+              this.setState({_id: '',producto: '', cliente: '',idCliente:'',vendedor:'',precio:'',cantidad:''});
+
               this.fetchTasks();
             });
             swal({
@@ -101,7 +107,9 @@ class AgregarVentas extends Component{
                 
               });
               
-              this.setState({producto: '', cliente: '',vendedor:'',precio:'',cantidad:''});
+
+              this.setState({producto: '', cliente: '',idCliente:'',vendedor:'',precio:'',cantidad:''});
+
               this.fetchTasks();
             })
             .catch(err => console.error(err));
@@ -116,6 +124,9 @@ class AgregarVentas extends Component{
             this.setState({
               producto: data.producto,
               cliente: data.cliente,
+
+              idCliente:data.idCliente,
+
               vendedor: data.vendedor,
               precio: data.precio,
               cantidad: data.cantidad,
@@ -157,17 +168,40 @@ class AgregarVentas extends Component{
             });
         }
       }
+      filter(event){
+        
+        var text = event.target.value
+        const data = this.state.productoBackup
+        const newData = data.filter(function(item){
+          const itemDataClien = item.cliente.toUpperCase()
+          const itemDataVend = item.vendedor.toUpperCase()
+          const itemIDCliente=item.idCliente
+          
+          const itemID=item._id.toUpperCase()
+          const campo = itemDataClien+" " + itemDataVend+ " "+itemIDCliente+" "+itemID
+          const textData = text.toUpperCase()
+          return campo.indexOf(textData) > -1
+      })
+      this.setState({
+        ventas: newData,
+        text: text,
+    })
+     }
 
       componentDidMount() {
         this.fetchTasks();
+        
       }
     
       fetchTasks() {
         fetch(`http://localhost:3002/api/ventas`)
           .then(res => res.json())
           .then(data => {
-            this.setState({ventas: data});
+            this.setState({ventas: data,
+              productoBackup:data});
+            
             console.log(this.state.ventas);
+            
           });
       }
     
@@ -195,9 +229,15 @@ class AgregarVentas extends Component{
                   </Form.Group>
       
                   <Form.Group className="mb-3" controlId="formBasicEmail">
-                      <Form.Label>Ciente</Form.Label>
+                      <Form.Label>Cliente</Form.Label>
                       <Form.Control name="cliente" onChange={this.handleChange} value={this.state.cliente} type="text" placeholder="Ingrese cliente" />
                   </Form.Group>
+
+                  <Form.Group className="mb-3" controlId="formBasicEmail">
+                      <Form.Label>ID Ciente</Form.Label>
+                      <Form.Control name="idCliente" onChange={this.handleChange} value={this.state.idCliente} type="text" placeholder="Ingrese identificador cliente" />
+                  </Form.Group>
+
       
                   <Form.Group className="mb-3" controlId="formBasicPassword">
                       <Form.Label>Vendedor</Form.Label>
@@ -248,21 +288,15 @@ class AgregarVentas extends Component{
   
   </div>
             <div className="search">    
-                <Form className="d-flex">
-                      <FormControl
-                        type="search"
-                        placeholder="Search"
-                        className="mr-2"
-                        aria-label="Search"
-                      />{' '}
-                      <Button variant="primary">Buscar</Button>
-                </Form>
+
+            <input class="form-control"  placeholder="Buscar por cliente, ID cliente o id venta" value={this.state.text} onChange={(text) => this.filter(text)}/>
             </div>
   <Table striped bordered hover>
             <thead>
               <tr>
                 <th>Producto</th>
                 <th>Cliente</th>
+                <th>ID Cliente</th>
                 <th>Vendedor</th>
                 <th>Precio</th>
                 <th>Cantidad</th>
@@ -276,6 +310,7 @@ class AgregarVentas extends Component{
                     
                     <td>{venta.producto} </td>
                     <td>{venta.cliente} </td>
+                    <td>{venta.idCliente} </td>
                     <td>{venta.vendedor} </td>
                     <td>{venta.precio} </td>
                     <td>{venta.cantidad} </td>                   
