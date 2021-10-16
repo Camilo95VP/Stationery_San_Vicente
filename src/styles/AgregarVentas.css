@@ -1,0 +1,36 @@
+.cont-form{
+    width: 100%;
+    margin: 0 auto;
+    margin-bottom: 30px;
+   
+}
+.cont-fatherr{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+}
+@media(max-width: 620px){
+    .cont-fatherr{
+        
+        display: grid;
+        grid-template-columns: repeat(1,1fr);
+    }
+}
+.gif1{
+    width: 50%;
+    position: relative;
+    top: 100px;
+    height: 200px;
+    left: 90px;
+}
+.gif2{
+    width: 40%;
+    position: relative;
+    height: 200px;
+    margin: 0 auto;
+    top: 150px;
+    left: 80px;
+}
+.search{
+    margin-bottom: 20px;
+}

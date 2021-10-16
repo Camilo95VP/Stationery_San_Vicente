@@ -6,10 +6,9 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import SistemaGestion from './components/SistemaGestion'
 import ListProducts from "./components/ListProducts";
 import Logout from './components/Logout'
-import Ventas from './components/Ventas'
 import Product from "./components/Product";
 import AgregarUsuario from "./components/AgregarUsuario";
-
+import AgregarVentas from "./components/AgregarVentas"
 
 
 
@@ -34,7 +33,7 @@ function App() {
               </Route>
 
               <Route path="/Ventas">
-                <Ventas />
+                <AgregarVentas />
               </Route>
 
               <Route exact path="/product/:id" component={Product} />
