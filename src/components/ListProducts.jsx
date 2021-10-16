@@ -33,15 +33,17 @@ function ListProducts() {
       confirmButtonText: "Si, eliminarlo",
     }).then((result) => {
       if (result.isConfirmed) {
-        if (deleteProduct(id)) {
-          const productosActuales = productos.filter(
-            (producto) => producto.id !== id
-          );
-          setProductos(productosActuales);
-          Swal.fire("Eliminado", "El producto ha sido eliminado", "success");
-        } else {
-          Swal.fire("Error", "El producto no ha sido eliminado", "error");
-        }
+        deleteProduct(id)
+          .then((res) => {
+            const productosActuales = productos.filter(
+              (producto) => producto._id !== id
+            );
+            setProductos(productosActuales);
+            Swal.fire("Eliminado", "El producto ha sido eliminado", "success");
+          })
+          .catch((err) => {
+            Swal.fire("Error", "El producto no ha sido eliminado", "error");
+          });
       }
     });
   };
@@ -61,7 +63,7 @@ function ListProducts() {
           </Form>
         </Row>
         <Row>
-          <div className="col-4">
+          <div className="col-12">
             <Link to="/product/new">
               <button className="btn btn-lg btn-primary">Nuevo Producto</button>
             </Link>
@@ -87,23 +89,25 @@ function ListProducts() {
                       </span>
                     </div>
                     <div className="cost mt-3 text-dark">
-                      <span>${producto.price}</span>
+                      <span>$ {producto.price}</span>
                     </div>
+                    {/*
                     <div
                       className={
-                        producto.active
+                        producto.disponible
                           ? "alert alert-success"
                           : "alert alert-danger"
                       }
                       role="alert"
                     >
-                      {producto.active ? "Activo" : "Inactivo"}
+                      {producto.disponible ? "Activo" : "Inactivo"}
                     </div>
+                    */}
                   </div>
                   <div className="row">
                     <div className="col-8">
                       <Link to={`/product/${producto._id}`}>
-                        <div className="p-3 edit text-center text-white mt-3 cursor">
+                        <div className="p-3 edit text-center mt-3 cursor bg-success text-white">
                           <span className="text-uppercase">
                             <i className="fas fa-pen"></i>
                             Editar

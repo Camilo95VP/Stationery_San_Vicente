@@ -49,24 +49,27 @@ export function getProduct(id) {
 }
 
 export function setProduct(producto) {
-  if (producto.id === "new") {
-    producto.id = Date.now();
-    Productos.push(producto);
-  } else {
-    let index = Productos.findIndex((res) => res.id === producto.id);
-    Productos[index] = producto;
+  if (producto._id === "new") {
+    //producto.id = Date.now();
+    //Productos.push(producto);
+    delete producto._id;
+    return axios.post(`${Path.url}/products`, producto);
+  } else if (producto._id) {
+    //let index = Productos.findIndex((res) => res.id === producto.id);
+    //Productos[index] = producto;
+    return axios.put(`${Path.url}/products/${producto._id}`, producto);
   }
 }
 
 export function deleteProduct(id) {
   if (id !== undefined) {
-    if (Productos.findIndex((producto) => producto.id === id) >= 0) {
+    /*if (Productos.findIndex((producto) => producto.id === id) >= 0) {
       const productosActualizados = Productos.filter(
         (producto) => producto.id !== id
       );
       Productos = productosActualizados;
       return true;
-    }
-    return false;
+    }*/
+    return axios.delete(`${Path.url}/products/${id}`);
   }
 }

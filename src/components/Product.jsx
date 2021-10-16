@@ -13,6 +13,7 @@ const Product = () => {
   useEffect(() => {
     getProduct(id)
       .then((res) => {
+        if (res.data.disponible === undefined) res.data.disponible = false;
         setProducto(res.data);
       })
       .catch((err) => {
@@ -25,9 +26,10 @@ const Product = () => {
       ...producto,
       [event.target.name]: event.target.value,
     });
+    //console.log(producto);
   };
 
-  let buscarImagen = async () => {
+  /*let buscarImagen = async () => {
     const { value: file } = await Swal.fire({
       title: "Seleccione una imagen",
       input: "file",
@@ -52,7 +54,7 @@ const Product = () => {
       };
       reader.readAsDataURL(file);
     }
-  };
+  };*/
 
   const guardar = (event) => {
     event.preventDefault();
@@ -63,18 +65,27 @@ const Product = () => {
         title: "La cantidad debe ser igual o mayor a 0",
       });
     } else {
-      setProduct(producto);
-      Swal.fire({
-        icon: "success",
-        title:
-          producto.id === "new" ? "Producto Creado" : "Producto Actualizado",
-      });
+      setProduct(producto)
+        .then(() => {
+          Swal.fire({
+            icon: "success",
+            title: "Producto guardado",
+          });
+        })
+        .catch((err) => {
+          console.error(err);
+        });
     }
   };
 
   return (
     <>
       <Container className="mt-5 mb-5">
+        <div className="row justify-content-center">
+          <div className="col-md-4">
+            <h1>Producto</h1>
+          </div>
+        </div>
         <div className="row justify-content-center">
           <div className="col-md-4">
             <div className="card text-dark bg-light mb-2">
@@ -113,7 +124,7 @@ const Product = () => {
                       value={producto.cantity}
                     />
                   </div>
-                  <div className="mb-3">
+                  {/*<div className="mb-3">
                     <button
                       className="btn btn-secondary btn-lg"
                       type="button"
@@ -122,6 +133,17 @@ const Product = () => {
                     >
                       Imagen
                     </button>
+                  </div>*/}
+                  <div className="mb-3">
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="url"
+                      name="url"
+                      placeholder="Url Imagen"
+                      onChange={handleInputChange}
+                      value={producto.url}
+                    />
                   </div>
                   <div className="input-group mb-3">
                     <label
@@ -147,19 +169,21 @@ const Product = () => {
                       value={producto.description}
                     ></textarea>
                   </div>
+                  {/*
                   <div class="form-group form-check">
                     <input
                       type="checkbox"
                       class="form-check-input"
-                      id="active"
-                      name="active"
+                      id="disponible"
+                      name="disponible"
                       onChange={handleInputChange}
-                      value={producto.active}
+                      value={producto.disponible}
                     />
                     <label class="form-check-label" for="exampleCheck1">
-                      {producto.active ? "Desactivar" : "Activar"}
+                      {producto.disponible ? "Desactivar" : "Activar"}
                     </label>
                   </div>
+                  */}
                   <button className="btn btn-success btn-block" type="submit">
                     Guardar
                   </button>
@@ -191,16 +215,18 @@ const Product = () => {
                 <p>
                   <b>Descripcion:</b> {producto.description}
                 </p>
+                {/*
                 <div
                   className={
-                    producto.active
+                    producto.disponible
                       ? "alert alert-success"
                       : "alert alert-danger"
                   }
                   role="alert"
                 >
-                  {producto.active ? "Activo" : "Inactivo"}
+                  {producto.disponible ? "Activo" : "Inactivo"}
                 </div>
+                */}
               </div>
             </div>
           </div>
