@@ -6,7 +6,7 @@ import {Component} from 'react'
 import Table from "react-bootstrap/Table"
 import swal from 'sweetalert'
 import Swal from "sweetalert2";
-
+import "../styles/AgregarVentas.css"
 import FormControl from "react-bootstrap/FormControl";
 
 
