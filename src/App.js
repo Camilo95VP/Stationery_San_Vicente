@@ -5,7 +5,7 @@ import Home from '../src/components/Home'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import SistemaGestion from './components/SistemaGestion'
 import ListProducts from "./components/ListProducts";
-import Logout from './components/Logout'
+
 import Product from "./components/Product";
 import AgregarUsuario from "./components/AgregarUsuario";
 
@@ -21,7 +21,7 @@ function App() {
       <BrowserRouter>
         
         <Nav />
-        {isAuthenticated ? (<><SistemaGestion /><Logout /></>) : (<Home />)}
+        {isAuthenticated ? (<><SistemaGestion /></>) : (<Home />)}
 
           <Switch>
             

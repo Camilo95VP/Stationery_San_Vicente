@@ -1,14 +1,17 @@
 .cont-buttonn{
+    float: right;
+    width: 10%;
     text-align: end;
     position: relative;
-    bottom: 70px;
-    padding: 7px;
-    width: 200px;
-    left: 300px;
-    float: right;
+    left: 220px;
+    bottom: 62px;
+    
 }
-@media(max-width: 480px){
-    .cont-buttonn{
-        bottom: 340px;
-    }
+.boton-off{
+    background-color: rgb(221, 0, 0);
+    font-size: 23px;
+    border-radius: 50%;
+}
+.boton-off i{
+    color: rgb(243, 243, 243);
 }

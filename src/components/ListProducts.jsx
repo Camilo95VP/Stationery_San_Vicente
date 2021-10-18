@@ -49,23 +49,28 @@ function ListProducts() {
   };
 
   return (
+    <>
+    
+            
+          
     <Fragment>
+      
       <Container className="mb-2 mt-0">
-        <Row className="mb-2">
-          <Form className="d-flex">
-            <FormControl
+        
+      <FormControl
               type="search"
               placeholder="Search"
-              className="mr-2"
+              className="mr-4"
               aria-label="Search"
             />
-            <Button variant="primary">Buscar</Button>
-          </Form>
-        </Row>
+            <br />
+        
         <Row>
           <div className="col-12">
             <Link to="/product/new">
-              <button className="btn btn-lg btn-primary">Nuevo Producto</button>
+              <button className="btn btn-lg btn-primary">Nuevo Producto {'   '} {'   '}<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+</svg></button>
             </Link>
           </div>
         </Row>
@@ -109,7 +114,7 @@ function ListProducts() {
                       <Link to={`/product/${producto._id}`}>
                         <div className="p-3 edit text-center mt-3 cursor bg-success text-white">
                           <span className="text-uppercase">
-                            <i className="fas fa-pen"></i>
+                            <i className="fas fa-pen"></i>{' '}
                             Editar
                           </span>
                         </div>
@@ -133,6 +138,7 @@ function ListProducts() {
         </Row>
       </Container>
     </Fragment>
+    </>
   );
 }
 

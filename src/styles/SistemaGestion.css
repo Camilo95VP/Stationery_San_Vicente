@@ -1,3 +1,6 @@
+.body{
+    background-color: yellow;
+}
 .cont{
     text-align: center;
 }
@@ -29,10 +32,14 @@
 .cont-profile img{
     border-radius: 50%;
     width: 40px;
+    position: relative;
+    right: 30px;
 }
 .cont-profile p{
     font-size: 10px;
     color: white;
+    position: relative;
+    right: 30px;
 }
 .spinner{
     width: 200px;
@@ -45,6 +52,17 @@
 .cont-father{
     height: 10px;
     
+}
+.notify{
+    
+    width: 20%;
+    margin: 0px 0px 0px 75px;
+}
+.btn-warning {
+    color: #000;
+    background-color: #ffc107;
+    border-color: #ffc107;
+    border-radius: 50%;
 }
 @media(max-width: 480px){
     .cont-profile{

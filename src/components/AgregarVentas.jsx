@@ -5,9 +5,8 @@ import Button from 'react-bootstrap/Button'
 import {Component} from 'react'
 import Table from "react-bootstrap/Table"
 import swal from 'sweetalert'
-import Swal from "sweetalert2";
+import Swal from "sweetalert2"
 import "../styles/AgregarVentas.css"
-import FormControl from "react-bootstrap/FormControl";
 
 
 class AgregarVentas extends Component{
@@ -30,6 +29,8 @@ class AgregarVentas extends Component{
         this.handleChange = this.handleChange.bind(this);
         this.addSell = this.addSell.bind(this);
       }
+
+
 
       actualizar(){
        
@@ -211,11 +212,7 @@ class AgregarVentas extends Component{
         <div className="father-cont"> 
             <h2> Sistema de gestión ventas</h2>{' '}
         </div>
-          <div className="arrow">    
-                <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-arrow-down" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z"/>
-                </svg>
-          </div>    
+          <br />
           <Container>
           <Form onSubmit={this.addSell}>
               <div className="cont-fatherr">
@@ -276,10 +273,15 @@ class AgregarVentas extends Component{
               </div>
   
               <Button variant="primary" type="submit" className="justify-content center" >
-                  Agregar Venta
+                  Agregar Venta {' '} <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-plus-fill" viewBox="0 0 16 16">
+                    <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zM9 5.5V7h1.5a.5.5 0 0 1 0 1H9v1.5a.5.5 0 0 1-1 0V8H6.5a.5.5 0 0 1 0-1H8V5.5a.5.5 0 0 1 1 0z"/>
+                  </svg>
               </Button>
               <Button variant="success" type="submit" className="justify-content center" onClick={this.actualizar}>
-                  Actualizar
+                  Actualizar {' '}<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/>
+                    <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/>
+                  </svg>
               </Button>
               </div>
   </Form>
@@ -288,8 +290,10 @@ class AgregarVentas extends Component{
   
   </div>
             <div className="search">    
-
-            <input class="form-control"  placeholder="Buscar por cliente, ID cliente o id venta" value={this.state.text} onChange={(text) => this.filter(text)}/>
+                <div className="icon-search"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                </svg></div>
+            <input class="form-control"  placeholder="Buscar por cliente, ID cliente o id venta" value={this.state.text} onChange={(text) => this.filter(text)}  />
             </div>
   <Table striped bordered hover>
             <thead>

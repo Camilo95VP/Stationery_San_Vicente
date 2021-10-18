@@ -30,9 +30,13 @@
     display: flex;
 }
 .father-cont h2{
-   margin-left: 650px;
+   margin-left: 750px;
 }
 .arrow{
     width: 100%;
     text-align: center;
+}
+.toa{
+    width: 30%;
+    margin: 20px 0px 0px 75px;
 }

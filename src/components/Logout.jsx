@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button'
 import '../styles/Logout.css'
 import Swal from 'sweetalert2/dist/sweetalert2.js'
 
+
 export default function Logout() {
     const { logout } = useAuth0();
 
@@ -34,7 +35,7 @@ export default function Logout() {
 
     return (
         <div className="cont-buttonn" onClick={() => closeSesion()} >
-            <Button onClick={() => logout()} variant="danger" type="submit" className="justify-content-end">Logout</Button>
+            <button onClick={() => logout()} variant="danger" type="submit" className="boton-off"><i class="fas fa-power-off"></i></button>
         </div>
     )
 }
