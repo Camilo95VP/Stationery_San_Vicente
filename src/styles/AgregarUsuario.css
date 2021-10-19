@@ -40,3 +40,34 @@
     width: 30%;
     margin: 20px 0px 0px 75px;
 }
+
+@media(max-width: 480px){
+    .father-cont h2{
+        display: none;
+     }
+     .boton h6{
+        display: none;
+     }
+     .cont-icons{
+         display: none;
+     }
+     .boton{
+         flex-direction: column;
+         width: 50%;
+     }
+     .btn{
+         width: 100%;
+         margin: 10px 0px 0px 0px;
+     }
+     .cont-form1{     
+        position: relative;
+        top: 200px;    
+    }
+    .cont-form2{     
+        position: relative;
+        top: 50px;     
+    }
+    .break{
+        margin-top: 210px;
+    }
+}

@@ -5,9 +5,8 @@ import "../styles/ListProducts.css";
 import imageNotFound from "../assets/img/undraw_Web_search_re_efla.svg";
 import { getProducts, deleteProduct } from "./ListProductsService.js";
 import Swal from "sweetalert2";
-import Form from "react-bootstrap/Form";
 import FormControl from "react-bootstrap/FormControl";
-import Button from "react-bootstrap/Button";
+
 
 function ListProducts() {
   const [productos, setProductos] = useState([]);
@@ -25,7 +24,7 @@ function ListProducts() {
   const borrarProducto = (id) => {
     Swal.fire({
       title: "¿Esta seguro?",
-      text: "Esta seguro de eliminar el producto",
+      text: "Esta seguro desea eliminar el producto",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
@@ -56,7 +55,7 @@ function ListProducts() {
     <Fragment>
       
       <Container className="mb-2 mt-0">
-        
+      <div className="cont-form1">
       <FormControl
               type="search"
               placeholder="Search"
@@ -136,6 +135,7 @@ function ListProducts() {
             );
           })}
         </Row>
+        </div>
       </Container>
     </Fragment>
     </>

@@ -40,3 +40,11 @@
     font-size: 20px;
     margin: 0px 5px 0px 0px;
 }
+@media(max-width: 420px){
+    .gif1{
+        display: none;
+    }
+    .cont-form{
+        margin-top: 200px;
+    }
+}

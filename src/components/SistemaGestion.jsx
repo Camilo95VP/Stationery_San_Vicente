@@ -88,16 +88,17 @@ export default function SistemaGestion() {
       <Logout />
   <div className="notify">
        <Button variant="warning" onClick={notify} 
-       ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+       ><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
        <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
        <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
-     </svg></Button>
+     </svg></Button>{' '}
+     <div className="hand"><i className="far fa-hand-point-left"></i></div>
   </div>
   
  <div className="toa">
    
   <ToastContainer>
-      <Toast onClose={() => setShow(false)} show={show} delay={15000} autohide>
+      <Toast onClose={() => setShow(false)} show={show} delay={8000} autohide>
         <Toast.Header>
           <img src="holder.js/20x20?text=%20" className="rounded me-2" alt="" />
           <strong className="me-auto">Registro exitoso {' '} <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-all" viewBox="0 0 16 16">

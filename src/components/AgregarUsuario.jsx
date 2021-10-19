@@ -172,6 +172,7 @@ render(){
       </div>
         
         <Container>
+        <div className="cont-form1">
         <Form onSubmit={this.addUser}>
             <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Nombre</Form.Label>
@@ -188,7 +189,7 @@ render(){
                 <Form.Control name="estado" onChange={this.handleChange} value={this.state.estado} type="text" placeholder="Ingrese Rol" />
             </Form.Group>
             <div className="boton">
-            <h9>Agrega un usuario y dale potestad de administrador o<br/>usuario. Elimina y actualiza información.</h9>
+            <h6>Agrega un usuario y dale potestad de administrador o<br/>usuario. Elimina y actualiza información.</h6>
             
             <div className="cont-icons">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-text" viewBox="0 0 16 16">
@@ -206,14 +207,14 @@ render(){
                   </svg>
             </div>
 
-            <Button variant="primary" type="submit" className="justify-content center" >
+            <Button variant="primary" type="submit" className="btn" >
                 Agregar Usuario{ ' '} <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-plus-fill" viewBox="0 0 16 16">
                   <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
                   <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
                 </svg>
             </Button>
 
-            <Button variant="success" type="submit" className="justify-content center" onClick={this.actualizar}>
+            <Button variant="success" type="submit" className="btn" onClick={this.actualizar}>
                 Actualizar{' '}<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/>
                     <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/>
@@ -221,10 +222,12 @@ render(){
             </Button>
             </div>
 </Form>
+</div>
 <br />
 <div className="break">
 
 </div>
+<div className="cont-form2">
 <Table striped bordered hover>
           <thead>
             <tr>
@@ -258,6 +261,8 @@ render(){
             })}
           </tbody>
         </Table>
+</div>
+      
 </Container>
 </>
     )

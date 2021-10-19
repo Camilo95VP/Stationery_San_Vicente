@@ -8,10 +8,17 @@
     
 }
 .boton-off{
-    background-color: rgb(221, 0, 0);
+    background: rgb(2,0,36);
+background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,0,0,1) 100%, rgba(0,212,255,1) 100%);
     font-size: 23px;
     border-radius: 50%;
 }
 .boton-off i{
     color: rgb(243, 243, 243);
+}
+@media(max-width: 480px){
+    .cont-buttonn{
+        float: left;
+        width: 15%;        
+    }
 }

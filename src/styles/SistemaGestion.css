@@ -54,7 +54,7 @@
     
 }
 .notify{
-    
+    display: flex;
     width: 20%;
     margin: 0px 0px 0px 75px;
 }
@@ -64,10 +64,22 @@
     border-color: #ffc107;
     border-radius: 50%;
 }
+.fa-hand-point-left{
+    font-size: 20px;
+}
+.hand{
+    margin: 10px 0px 0px 5px;
+}
 @media(max-width: 480px){
     .cont-profile{
         text-align: center;
         left: -70px;
+        top: 3px;
+    }
+    .cont-profile p{
+     
+        color: rgb(0, 0, 0);
+       
     }
 }
 @media(max-width: 480px){
@@ -79,7 +91,7 @@
     .cont-buttons{
         display: grid;
         grid-template-columns: repeat(1, 1fr);
-        width: 100%;
+        width: 80%;
         bottom: 120px;
         left: 0px;
     }
