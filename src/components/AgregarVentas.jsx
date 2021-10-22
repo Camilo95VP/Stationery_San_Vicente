@@ -29,21 +29,6 @@ class AgregarVentas extends Component{
         this.handleChange = this.handleChange.bind(this);
         this.addSell = this.addSell.bind(this);
       }
-
-
-
-      actualizar(){
-       
-          swal({
-    
-          
-            title: "Primero edite la venta y luego lo actualiza",
-            icon: "error",
-            button: true,
-            
-          });
-        
-      }
     
       handleChange(e) {
         const { name, value } = e.target;
@@ -81,7 +66,7 @@ class AgregarVentas extends Component{
             swal({
     
     
-              title: "Venta Actualizado",
+              title: "Venta Actualizada",
               icon: "success",
               button: true,
               
@@ -144,12 +129,12 @@ class AgregarVentas extends Component{
           showCancelButton: true,
           confirmButtonColor: '#3085d6',
           cancelButtonColor: '#d33',
-          confirmButtonText: 'Si, eliminarlo!'
+          confirmButtonText: 'Si, eliminarla!'
         }).then((result) => {
           if (result.isConfirmed) {
             Swal.fire(
-              'Eliminado!',
-              'La venta ha sido eliminado.',
+              'Eliminada!',
+              'La venta ha sido eliminada.',
               'success'
             )
           }
@@ -188,6 +173,14 @@ class AgregarVentas extends Component{
         text: text,
     })
      }
+     actualizar(){
+      swal({
+        title: "Primero edite la venta y luego la actualiza",
+        icon: "error",
+             
+      });
+    
+  }
 
       componentDidMount() {
         this.fetchTasks();
@@ -277,7 +270,7 @@ class AgregarVentas extends Component{
                     <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zM9 5.5V7h1.5a.5.5 0 0 1 0 1H9v1.5a.5.5 0 0 1-1 0V8H6.5a.5.5 0 0 1 0-1H8V5.5a.5.5 0 0 1 1 0z"/>
                   </svg>
               </Button>
-              <Button variant="success" type="submit" className="justify-content center" onClick={this.actualizar}>
+              <Button variant="success"  className="justify-content center" onClick={this.actualizar}>
                   Actualizar {' '}<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/>
                     <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/>
