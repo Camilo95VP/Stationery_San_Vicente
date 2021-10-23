@@ -48,7 +48,7 @@ class AgregarUsuario extends Component{
       addUser(e) {
         e.preventDefault();
         if(this.state._id) {
-          fetch(`http://localhost:3002/api/usuarios/${this.state._id}`, {
+          fetch(`https://stationary-san-vicent-backend.herokuapp.com/api/usuarios/${this.state._id}`, {
             method: 'PUT',
             body: JSON.stringify({
               nombre: this.state.nombre,
@@ -76,7 +76,7 @@ class AgregarUsuario extends Component{
             });
             
         } else {
-          fetch('http://localhost:3002/api/usuarios', {
+          fetch('https://stationary-san-vicent-backend.herokuapp.com/api/usuarios', {
             method: 'POST',
             body: JSON.stringify(this.state),
             headers: {
@@ -104,7 +104,7 @@ class AgregarUsuario extends Component{
     
       }
       editUser(id) {
-        fetch(`http://localhost:3002/api/usuarios/${id}`)
+        fetch(`https://stationary-san-vicent-backend.herokuapp.com/api/usuarios/${id}`)
           .then(res => res.json())
           .then(data => {
             console.log(data);
@@ -135,7 +135,7 @@ class AgregarUsuario extends Component{
             )
           }
         })) {
-          fetch(`http://localhost:3002/api/usuarios/${id}`, {
+          fetch(`https://stationary-san-vicent-backend.herokuapp.com/api/usuarios/${id}`, {
             method: 'DELETE',
             headers: {
               'Accept': 'application/json',
@@ -156,7 +156,7 @@ class AgregarUsuario extends Component{
       }
     
       fetchTasks() {
-        fetch(`http://localhost:3002/api/usuarios`)
+        fetch(`https://stationary-san-vicent-backend.herokuapp.com/api/usuarios`)
           .then(res => res.json())
           .then(data => {
             this.setState({usuarios: data});
